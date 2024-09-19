@@ -37,7 +37,16 @@
             <div class="search-bar">
                 <input type="text" id="searchInput" onkeyup="filterCards()" placeholder="Buscar setor.">
             </div>
-            <a href="https://docs.google.com/presentation/d/1S98W_EskCuOKAh6G9iZln9KnS2fPL27fJw7a-59_lSY/edit?usp=sharing" target="_blank" style="padding:10px;background-color:#3b5998;color:white;border:none;border-radius:25px;text-decoration:none;margin-right:10px;">Orientações</a>
+            <!-- Botão com menu suspenso para Orientações -->
+            <div class="dropdown">
+    <button class="dropbtn" style="padding:10px;background-color:#3b5998;color:white;border:none;border-radius:25px;text-decoration:none;margin-right:10px;">
+        Orientações
+    </button>
+    <div class="dropdown-content">
+        <a href="https://docs.google.com/presentation/d/1S98W_EskCuOKAh6G9iZln9KnS2fPL27fJw7a-59_lSY/edit?usp=sharing" target="_blank">Apresentação</a>
+        <a href="https://www.youtube.com/watch?v=3WbEffQa_6Q" target="_blank">Vídeo no YouTube</a>
+    </div>
+</div>
             <button id="darkModeToggle" class="theme-toggle">🌙</button>
             <span class="menu-icon" onclick="openSideMenu()">☰</span>
         </div>
