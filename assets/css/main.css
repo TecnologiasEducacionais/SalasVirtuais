@@ -51,1791 +51,241 @@ header img {
     border: none;
     font-size: 24px;
     cursor: pointer;
+    color: white;
+    transition: transform 0.3s ease;
+    position: relative;
+    margin-right: 10px; /* Ajustar margem */
+}
+
+.theme-toggle:hover {
+    transform: scale(1.2);
+}
+
+.search-bar {
+    margin-right: 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    padding: 8px 16px;
+    border-radius: 25px;
+    border: 1px solid #ddd;
+    width: 250px;
+    font-size: 0.9em;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    box-sizing: border-box; /* Garantir que a barra de pesquisa não ultrapasse os limites */
+}
+
+.search-bar input:focus {
+    outline: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    margin-top: 30px;
+    font-weight: 600;
+    font-size: 2.5em;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 40px;
+    width: 100%;
+    max-width: 1200px;
+    box-sizing: border-box;
+}
+
+.card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.card h2 {
+    margin-top: 0;
+    font-weight: 600;
+    font-size: 1.5em;
+    color: #3b5998;
+    transition: color 0.3s ease;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 140px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    margin-left: -70px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.card .toggle-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background-color: #3b5998;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+.card .toggle-link:hover {
+    background-color: #314a86;
+    transform: translateY(-5px);
+}
+
+.card .show-links {
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.card .show-links a {
+    display: block;
+    padding: 10px;
+    background-color: #5b72b2;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 25px;
+    text-align: center;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 180px;
+    margin: 0 auto;
+}
+
+.card .show-links a:hover {
+    background-color: #3b5998;
+    transform: translateY(-5px);
+}
+
+#noResults {
+    display: none;
+    text-align: center;
+    font-size: 1.2em;
+    color: #888;
+}
+
+/* Dark mode styles */
+.dark-mode {
+    background-color: #1e1e1e;
     color: #ffffff;
 }
 
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f0f4f8;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            min-height: 100vh;
-            color: #333;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            overflow-x: hidden; /* Evitar rolagem horizontal */
-        }
-
-        header {
-            background-color: #004070;
-            color: #ffffff;
-            width: 100%;
-            padding: 10px 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-sizing: border-box;
-        }
-
-        header img {
-            max-height: 40px;
-            margin-left: 20px;
-        }
-
-        .left-header {
-            display: flex;
-            align-items: center;
-        }
-
-        .right-header {
-            display: flex;
-            align-items: center;
-            margin-left: auto;
-        }
-
-        .theme-toggle {
-            background-color: transparent;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: white;
-            transition: transform 0.3s ease;
-            position: relative;
-            margin-right: 10px; /* Ajustar margem */
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.2);
-        }
-
-        .search-bar {
-            margin-right: 10px;
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .search-bar input {
-            padding: 8px 16px;
-            border-radius: 25px;
-            border: 1px solid #ddd;
-            width: 250px;
-            font-size: 0.9em;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            box-sizing: border-box; /* Garantir que a barra de pesquisa não ultrapasse os limites */
-        }
-
-        .search-bar input:focus {
-            outline: none;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        h1 {
-            margin-top: 30px;
-            font-weight: 600;
-            font-size: 2.5em;
-            text-align: center;
-            letter-spacing: 1px;
-            color: #333;
-            transition: color 0.3s ease;
-        }
-
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            padding: 40px;
-            width: 100%;
-            max-width: 1200px;
-            box-sizing: border-box;
-        }
-
-        .card {
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-            padding: 25px;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        .card h2 {
-            margin-top: 0;
-            font-weight: 600;
-            font-size: 1.5em;
-            color: #3b5998;
-            transition: color 0.3s ease;
-        }
-
-        .tooltip {
-            position: relative;
-            display: inline-block;
-        }
-
-        .tooltip .tooltiptext {
-            visibility: hidden;
-            width: 140px;
-            background-color: #555;
-            color: #fff;
-            text-align: center;
-            border-radius: 5px;
-            padding: 5px 0;
-            position: absolute;
-            z-index: 1;
-            top: 100%;
-            left: 50%;
-            margin-left: -70px;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .tooltip:hover .tooltiptext {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        .card .toggle-link {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 25px;
-            background-color: #3b5998;
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 25px;
-            font-size: 1em;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            cursor: pointer;
-        }
-
-        .card .toggle-link:hover {
-            background-color: #314a86;
-            transform: translateY(-5px);
-        }
-
-        .card .show-links {
-            display: none;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .card .show-links a {
-            display: block;
-            padding: 10px;
-            background-color: #5b72b2;
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 25px;
-            text-align: center;
-            font-size: 1em;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            width: 180px;
-            margin: 0 auto;
-        }
-
-        .card .show-links a:hover {
-            background-color: #3b5998;
-            transform: translateY(-5px);
-        }
-
-        #noResults {
-            display: none;
-            text-align: center;
-            font-size: 1.2em;
-            color: #888;
-        }
-
-        /* Dark mode styles */
-        .dark-mode {
-            background-color: #1e1e1e;
-            color: #ffffff;
-        }
-
-        .dark-mode header {
-            background-color: #121212;
-        }
-
-        .dark-mode .card {
-            background-color: #2e2e2e;
-            color: #ffffff;
-        }
-
-        .dark-mode .card h2 {
-            color: #ffffff;
-        }
-
-        .dark-mode .toggle-link {
-            background-color: #f5c200;
-            color: #000;
-        }
-
-        .dark-mode h1 {
-            color: #ffffff;
-        }
-
-        .dark-mode #darkModeToggle {
-            background-color: transparent;
-            color: #f5c200;
-        }
-
-        /* Side Menu Styles */
-        .side-menu {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            right: 0;
-            background-color: #0f96ae;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-        }
-
-        .side-menu a {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 25px;
-            color: white;
-            display: block;
-            transition: 0.3s;
-        }
-
-        .side-menu a:hover {
-            color: #f1f1f1;
-        }
-
-        .side-menu .closebtn {
-            position: absolute;
-            top: 0;
-            left: 25px;
-            font-size: 36px;
-            margin-left: 50px;
-        }
-
-        .menu-icon {
-            font-size: 24px;
-            cursor: pointer;
-            color: white;
-            margin-left: 10px;
-        }
-
-        .menu-content {
-            position: absolute;
-            top: 60px;
-            right: 10px; /* Posicionado logo abaixo do ícone do menu */
-            display: none;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 10px;
-            z-index: 1000;
-        }
-    
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f0f4f8;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            min-height: 100vh;
-            color: #333;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            overflow-x: hidden; /* Evitar rolagem horizontal */
-        }
-
-        header {
-            background-color: #004070;
-            color: #ffffff;
-            width: 100%;
-            padding: 10px 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-sizing: border-box;
-        }
-
-        header img {
-            max-height: 40px;
-            margin-left: 20px;
-        }
-
-        .left-header {
-            display: flex;
-            align-items: center;
-        }
-
-        .right-header {
-            display: flex;
-            align-items: center;
-            margin-left: auto;
-        }
-
-        .theme-toggle {
-            background-color: transparent;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: white;
-            transition: transform 0.3s ease;
-            position: relative;
-            margin-right: 10px; /* Ajustar margem */
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.2);
-        }
-
-        .search-bar {
-            margin-right: 10px;
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .search-bar input {
-            padding: 8px 16px;
-            border-radius: 25px;
-            border: 1px solid #ddd;
-            width: 250px;
-            font-size: 0.9em;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            box-sizing: border-box; /* Garantir que a barra de pesquisa não ultrapasse os limites */
-        }
-
-        .search-bar input:focus {
-            outline: none;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        h1 {
-            margin-top: 30px;
-            font-weight: 600;
-            font-size: 2.5em;
-            text-align: center;
-            letter-spacing: 1px;
-            color: #333;
-            transition: color 0.3s ease;
-        }
-
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            padding: 40px;
-            width: 100%;
-            max-width: 1200px;
-            box-sizing: border-box;
-        }
-
-        .card {
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-            padding: 25px;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        .card h2 {
-            margin-top: 0;
-            font-weight: 600;
-            font-size: 1.5em;
-            color: #3b5998;
-            transition: color 0.3s ease;
-        }
-
-        .tooltip {
-            position: relative;
-            display: inline-block;
-        }
-
-        .tooltip .tooltiptext {
-            visibility: hidden;
-            width: 140px;
-            background-color: #555;
-            color: #fff;
-            text-align: center;
-            border-radius: 5px;
-            padding: 5px 0;
-            position: absolute;
-            z-index: 1;
-            top: 100%;
-            left: 50%;
-            margin-left: -70px;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .tooltip:hover .tooltiptext {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        .card .toggle-link {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 25px;
-            background-color: #3b5998;
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 25px;
-            font-size: 1em;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            cursor: pointer;
-        }
-
-        .card .toggle-link:hover {
-            background-color: #314a86;
-            transform: translateY(-5px);
-        }
-
-        .card .show-links {
-            display: none;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .card .show-links a {
-            display: block;
-            padding: 10px;
-            background-color: #5b72b2;
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 25px;
-            text-align: center;
-            font-size: 1em;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            width: 180px;
-            margin: 0 auto;
-        }
-
-        .card .show-links a:hover {
-            background-color: #3b5998;
-            transform: translateY(-5px);
-        }
-
-        #noResults {
-            display: none;
-            text-align: center;
-            font-size: 1.2em;
-            color: #888;
-        }
-
-        /* Dark mode styles */
-        .dark-mode {
-            background-color: #1e1e1e;
-            color: #ffffff;
-        }
-
-        .dark-mode header {
-            background-color: #121212;
-        }
-
-        .dark-mode .card {
-            background-color: #2e2e2e;
-            color: #ffffff;
-        }
-
-        .dark-mode .card h2 {
-            color: #ffffff;
-        }
-
-        .dark-mode .toggle-link {
-            background-color: #f5c200;
-            color: #000;
-        }
-
-        .dark-mode h1 {
-            color: #ffffff;
-        }
-
-        .dark-mode #darkModeToggle {
-            background-color: transparent;
-            color: #f5c200;
-        }
-
-        /* Side Menu Styles */
-        .side-menu {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            right: 0;
-            background-color: #0f96ae;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-        }
-
-        .side-menu a {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 25px;
-            color: white;
-            display: block;
-            transition: 0.3s;
-        }
-
-        .side-menu a:hover {
-            color: #f1f1f1;
-        }
-
-        .side-menu .closebtn {
-            position: absolute;
-            top: 0;
-            left: 25px;
-            font-size: 36px;
-            margin-left: 50px;
-        }
-
-        .menu-icon {
-            font-size: 24px;
-            cursor: pointer;
-            color: white;
-            margin-left: 10px;
-        }
-
-        .menu-content {
-            position: absolute;
-            top: 60px;
-            right: 10px; /* Posicionado logo abaixo do ícone do menu */
-            display: none;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 10px;
-            z-index: 1000;
-        }
-    
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f0f4f8;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            min-height: 100vh;
-            color: #333;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            overflow-x: hidden; /* Evitar rolagem horizontal */
-        }
-
-        header {
-            background-color: #004070;
-            color: #ffffff;
-            width: 100%;
-            padding: 10px 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-sizing: border-box;
-        }
-
-        header img {
-            max-height: 40px;
-            margin-left: 20px;
-        }
-
-        .left-header {
-            display: flex;
-            align-items: center;
-        }
-
-        .right-header {
-            display: flex;
-            align-items: center;
-            margin-left: auto;
-        }
-
-        .theme-toggle {
-            background-color: transparent;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: white;
-            transition: transform 0.3s ease;
-            position: relative;
-            margin-right: 10px; /* Ajustar margem */
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.2);
-        }
-
-        .search-bar {
-            margin-right: 10px;
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .search-bar input {
-            padding: 8px 16px;
-            border-radius: 25px;
-            border: 1px solid #ddd;
-            width: 250px;
-            font-size: 0.9em;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            box-sizing: border-box; /* Garantir que a barra de pesquisa não ultrapasse os limites */
-        }
-
-        .search-bar input:focus {
-            outline: none;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        h1 {
-            margin-top: 30px;
-            font-weight: 600;
-            font-size: 2.5em;
-            text-align: center;
-            letter-spacing: 1px;
-            color: #333;
-            transition: color 0.3s ease;
-        }
-
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            padding: 40px;
-            width: 100%;
-            max-width: 1200px;
-            box-sizing: border-box;
-        }
-
-        .card {
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-            padding: 25px;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        .card h2 {
-            margin-top: 0;
-            font-weight: 600;
-            font-size: 1.5em;
-            color: #3b5998;
-            transition: color 0.3s ease;
-        }
-
-        .tooltip {
-            position: relative;
-            display: inline-block;
-        }
-
-        .tooltip .tooltiptext {
-            visibility: hidden;
-            width: 140px;
-            background-color: #555;
-            color: #fff;
-            text-align: center;
-            border-radius: 5px;
-            padding: 5px 0;
-            position: absolute;
-            z-index: 1;
-            top: 100%;
-            left: 50%;
-            margin-left: -70px;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .tooltip:hover .tooltiptext {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        .card .toggle-link {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 25px;
-            background-color: #3b5998;
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 25px;
-            font-size: 1em;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            cursor: pointer;
-        }
-
-        .card .toggle-link:hover {
-            background-color: #314a86;
-            transform: translateY(-5px);
-        }
-
-        .card .show-links {
-            display: none;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .card .show-links a {
-            display: block;
-            padding: 10px;
-            background-color: #5b72b2;
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 25px;
-            text-align: center;
-            font-size: 1em;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            width: 180px;
-            margin: 0 auto;
-        }
-
-        .card .show-links a:hover {
-            background-color: #3b5998;
-            transform: translateY(-5px);
-        }
-
-        #noResults {
-            display: none;
-            text-align: center;
-            font-size: 1.2em;
-            color: #888;
-        }
-
-        /* Dark mode styles */
-        .dark-mode {
-            background-color: #1e1e1e;
-            color: #ffffff;
-        }
-
-        .dark-mode header {
-            background-color: #121212;
-        }
-
-        .dark-mode .card {
-            background-color: #2e2e2e;
-            color: #ffffff;
-        }
-
-        .dark-mode .card h2 {
-            color: #ffffff;
-        }
-
-        .dark-mode .toggle-link {
-            background-color: #f5c200;
-            color: #000;
-        }
-
-        .dark-mode h1 {
-            color: #ffffff;
-        }
-
-        .dark-mode #darkModeToggle {
-            background-color: transparent;
-            color: #f5c200;
-        }
-
-        /* Side Menu Styles */
-        .side-menu {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            right: 0;
-            background-color: #0f96ae;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-        }
-
-        .side-menu a {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 25px;
-            color: white;
-            display: block;
-            transition: 0.3s;
-        }
-
-        .side-menu a:hover {
-            color: #f1f1f1;
-        }
-
-        .side-menu .closebtn {
-            position: absolute;
-            top: 0;
-            left: 25px;
-            font-size: 36px;
-            margin-left: 50px;
-        }
-
-        .menu-icon {
-            font-size: 24px;
-            cursor: pointer;
-            color: white;
-            margin-left: 10px;
-        }
-
-        .menu-content {
-            position: absolute;
-            top: 60px;
-            right: 10px; /* Posicionado logo abaixo do ícone do menu */
-            display: none;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 10px;
-            z-index: 1000;
-        }
-    
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f0f4f8;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            min-height: 100vh;
-            color: #333;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            overflow-x: hidden; /* Evitar rolagem horizontal */
-        }
-
-        header {
-            background-color: #004070;
-            color: #ffffff;
-            width: 100%;
-            padding: 10px 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-sizing: border-box;
-        }
-
-        header img {
-            max-height: 40px;
-            margin-left: 20px;
-        }
-
-        .left-header {
-            display: flex;
-            align-items: center;
-        }
-
-        .right-header {
-            display: flex;
-            align-items: center;
-            margin-left: auto;
-        }
-
-        .theme-toggle {
-            background-color: transparent;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: white;
-            transition: transform 0.3s ease;
-            position: relative;
-            margin-right: 10px; /* Ajustar margem */
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.2);
-        }
-
-        .search-bar {
-            margin-right: 10px;
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .search-bar input {
-            padding: 8px 16px;
-            border-radius: 25px;
-            border: 1px solid #ddd;
-            width: 250px;
-            font-size: 0.9em;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            box-sizing: border-box; /* Garantir que a barra de pesquisa não ultrapasse os limites */
-        }
-
-        .search-bar input:focus {
-            outline: none;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        h1 {
-            margin-top: 30px;
-            font-weight: 600;
-            font-size: 2.5em;
-            text-align: center;
-            letter-spacing: 1px;
-            color: #333;
-            transition: color 0.3s ease;
-        }
-
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            padding: 40px;
-            width: 100%;
-            max-width: 1200px;
-            box-sizing: border-box;
-        }
-
-        .card {
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-            padding: 25px;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        .card h2 {
-            margin-top: 0;
-            font-weight: 600;
-            font-size: 1.5em;
-            color: #3b5998;
-            transition: color 0.3s ease;
-        }
-
-        .tooltip {
-            position: relative;
-            display: inline-block;
-        }
-
-        .tooltip .tooltiptext {
-            visibility: hidden;
-            width: 140px;
-            background-color: #555;
-            color: #fff;
-            text-align: center;
-            border-radius: 5px;
-            padding: 5px 0;
-            position: absolute;
-            z-index: 1;
-            top: 100%;
-            left: 50%;
-            margin-left: -70px;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .tooltip:hover .tooltiptext {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        .card .toggle-link {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 25px;
-            background-color: #3b5998;
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 25px;
-            font-size: 1em;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            cursor: pointer;
-        }
-
-        .card .toggle-link:hover {
-            background-color: #314a86;
-            transform: translateY(-5px);
-        }
-
-        .card .show-links {
-            display: none;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .card .show-links a {
-            display: block;
-            padding: 10px;
-            background-color: #5b72b2;
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 25px;
-            text-align: center;
-            font-size: 1em;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            width: 180px;
-            margin: 0 auto;
-        }
-
-        .card .show-links a:hover {
-            background-color: #3b5998;
-            transform: translateY(-5px);
-        }
-
-        #noResults {
-            display: none;
-            text-align: center;
-            font-size: 1.2em;
-            color: #888;
-        }
-
-        /* Dark mode styles */
-        .dark-mode {
-            background-color: #1e1e1e;
-            color: #ffffff;
-        }
-
-        .dark-mode header {
-            background-color: #121212;
-        }
-
-        .dark-mode .card {
-            background-color: #2e2e2e;
-            color: #ffffff;
-        }
-
-        .dark-mode .card h2 {
-            color: #ffffff;
-        }
-
-        .dark-mode .toggle-link {
-            background-color: #f5c200;
-            color: #000;
-        }
-
-        .dark-mode h1 {
-            color: #ffffff;
-        }
-
-        .dark-mode #darkModeToggle {
-            background-color: transparent;
-            color: #f5c200;
-        }
-
-        /* Side Menu Styles */
-        .side-menu {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            right: 0;
-            background-color: #0f96ae;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-        }
-
-        .side-menu a {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 25px;
-            color: white;
-            display: block;
-            transition: 0.3s;
-        }
-
-        .side-menu a:hover {
-            color: #f1f1f1;
-        }
-
-        .side-menu .closebtn {
-            position: absolute;
-            top: 0;
-            left: 25px;
-            font-size: 36px;
-            margin-left: 50px;
-        }
-
-        .menu-icon {
-            font-size: 24px;
-            cursor: pointer;
-            color: white;
-            margin-left: 10px;
-        }
-
-        .menu-content {
-            position: absolute;
-            top: 60px;
-            right: 10px; /* Posicionado logo abaixo do ícone do menu */
-            display: none;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 10px;
-            z-index: 1000;
-        }
-    
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f0f4f8;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            min-height: 100vh;
-            color: #333;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            overflow-x: hidden; /* Evitar rolagem horizontal */
-        }
-
-        header {
-            background-color: #004070;
-            color: #ffffff;
-            width: 100%;
-            padding: 10px 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-sizing: border-box;
-        }
-
-        header img {
-            max-height: 40px;
-            margin-left: 20px;
-        }
-
-        .left-header {
-            display: flex;
-            align-items: center;
-        }
-
-        .right-header {
-            display: flex;
-            align-items: center;
-            margin-left: auto;
-        }
-
-        .theme-toggle {
-            background-color: transparent;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: white;
-            transition: transform 0.3s ease;
-            position: relative;
-            margin-right: 10px; /* Ajustar margem */
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.2);
-        }
-
-        .search-bar {
-            margin-right: 10px;
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .search-bar input {
-            padding: 8px 16px;
-            border-radius: 25px;
-            border: 1px solid #ddd;
-            width: 250px;
-            font-size: 0.9em;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            box-sizing: border-box; /* Garantir que a barra de pesquisa não ultrapasse os limites */
-        }
-
-        .search-bar input:focus {
-            outline: none;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        h1 {
-            margin-top: 30px;
-            font-weight: 600;
-            font-size: 2.5em;
-            text-align: center;
-            letter-spacing: 1px;
-            color: #333;
-            transition: color 0.3s ease;
-        }
-
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            padding: 40px;
-            width: 100%;
-            max-width: 1200px;
-            box-sizing: border-box;
-        }
-
-        .card {
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-            padding: 25px;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        .card h2 {
-            margin-top: 0;
-            font-weight: 600;
-            font-size: 1.5em;
-            color: #3b5998;
-            transition: color 0.3s ease;
-        }
-
-        .tooltip {
-            position: relative;
-            display: inline-block;
-        }
-
-        .tooltip .tooltiptext {
-            visibility: hidden;
-            width: 140px;
-            background-color: #555;
-            color: #fff;
-            text-align: center;
-            border-radius: 5px;
-            padding: 5px 0;
-            position: absolute;
-            z-index: 1;
-            top: 100%;
-            left: 50%;
-            margin-left: -70px;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .tooltip:hover .tooltiptext {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        .card .toggle-link {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 25px;
-            background-color: #3b5998;
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 25px;
-            font-size: 1em;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            cursor: pointer;
-        }
-
-        .card .toggle-link:hover {
-            background-color: #314a86;
-            transform: translateY(-5px);
-        }
-
-        .card .show-links {
-            display: none;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .card .show-links a {
-            display: block;
-            padding: 10px;
-            background-color: #5b72b2;
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 25px;
-            text-align: center;
-            font-size: 1em;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            width: 180px;
-            margin: 0 auto;
-        }
-
-        .card .show-links a:hover {
-            background-color: #3b5998;
-            transform: translateY(-5px);
-        }
-
-        #noResults {
-            display: none;
-            text-align: center;
-            font-size: 1.2em;
-            color: #888;
-        }
-
-        /* Dark mode styles */
-        .dark-mode {
-            background-color: #1e1e1e;
-            color: #ffffff;
-        }
-
-        .dark-mode header {
-            background-color: #121212;
-        }
-
-        .dark-mode .card {
-            background-color: #2e2e2e;
-            color: #ffffff;
-        }
-
-        .dark-mode .card h2 {
-            color: #ffffff;
-        }
-
-        .dark-mode .toggle-link {
-            background-color: #f5c200;
-            color: #000;
-        }
-
-        .dark-mode h1 {
-            color: #ffffff;
-        }
-
-        .dark-mode #darkModeToggle {
-            background-color: transparent;
-            color: #f5c200;
-        }
-
-        /* Side Menu Styles */
-        .side-menu {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            right: 0;
-            background-color: #0f96ae;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-        }
-
-        .side-menu a {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 25px;
-            color: white;
-            display: block;
-            transition: 0.3s;
-        }
-
-        .side-menu a:hover {
-            color: #f1f1f1;
-        }
-
-        .side-menu .closebtn {
-            position: absolute;
-            top: 0;
-            left: 25px;
-            font-size: 36px;
-            margin-left: 50px;
-        }
-
-        .menu-icon {
-            font-size: 24px;
-            cursor: pointer;
-            color: white;
-            margin-left: 10px;
-        }
-
-        .menu-content {
-            position: absolute;
-            top: 60px;
-            right: 10px; /* Posicionado logo abaixo do ícone do menu */
-            display: none;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 10px;
-            z-index: 1000;
-        }
-    
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f0f4f8;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            min-height: 100vh;
-            color: #333;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            overflow-x: hidden; /* Evitar rolagem horizontal */
-        }
-
-        header {
-            background-color: #004070;
-            color: #ffffff;
-            width: 100%;
-            padding: 10px 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-sizing: border-box;
-        }
-
-        header img {
-            max-height: 40px;
-            margin-left: 20px;
-        }
-
-        .left-header {
-            display: flex;
-            align-items: center;
-        }
-
-        .right-header {
-            display: flex;
-            align-items: center;
-            margin-left: auto;
-        }
-
-        .theme-toggle {
-            background-color: transparent;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: white;
-            transition: transform 0.3s ease;
-            position: relative;
-            margin-right: 10px; /* Ajustar margem */
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.2);
-        }
-
-        .search-bar {
-            margin-right: 10px;
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .search-bar input {
-            padding: 8px 16px;
-            border-radius: 25px;
-            border: 1px solid #ddd;
-            width: 250px;
-            font-size: 0.9em;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            box-sizing: border-box; /* Garantir que a barra de pesquisa não ultrapasse os limites */
-        }
-
-        .search-bar input:focus {
-            outline: none;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        h1 {
-            margin-top: 30px;
-            font-weight: 600;
-            font-size: 2.5em;
-            text-align: center;
-            letter-spacing: 1px;
-            color: #333;
-            transition: color 0.3s ease;
-        }
-
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            padding: 40px;
-            width: 100%;
-            max-width: 1200px;
-            box-sizing: border-box;
-        }
-
-        .card {
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-            padding: 25px;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        .card h2 {
-            margin-top: 0;
-            font-weight: 600;
-            font-size: 1.5em;
-            color: #3b5998;
-            transition: color 0.3s ease;
-        }
-
-        .tooltip {
-            position: relative;
-            display: inline-block;
-        }
-
-        .tooltip .tooltiptext {
-            visibility: hidden;
-            width: 140px;
-            background-color: #555;
-            color: #fff;
-            text-align: center;
-            border-radius: 5px;
-            padding: 5px 0;
-            position: absolute;
-            z-index: 1;
-            top: 100%;
-            left: 50%;
-            margin-left: -70px;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .tooltip:hover .tooltiptext {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        .card .toggle-link {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 25px;
-            background-color: #3b5998;
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 25px;
-            font-size: 1em;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            cursor: pointer;
-        }
-
-        .card .toggle-link:hover {
-            background-color: #314a86;
-            transform: translateY(-5px);
-        }
-
-        .card .show-links {
-            display: none;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .card .show-links a {
-            display: block;
-            padding: 10px;
-            background-color: #5b72b2;
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 25px;
-            text-align: center;
-            font-size: 1em;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            width: 180px;
-            margin: 0 auto;
-        }
-
-        .card .show-links a:hover {
-            background-color: #3b5998;
-            transform: translateY(-5px);
-        }
-
-        #noResults {
-            display: none;
-            text-align: center;
-            font-size: 1.2em;
-            color: #888;
-        }
-
-        /* Dark mode styles */
-        .dark-mode {
-            background-color: #1e1e1e;
-            color: #ffffff;
-        }
-
-        .dark-mode header {
-            background-color: #121212;
-        }
-
-        .dark-mode .card {
-            background-color: #2e2e2e;
-            color: #ffffff;
-        }
-
-        .dark-mode .card h2 {
-            color: #ffffff;
-        }
-
-        .dark-mode .toggle-link {
-            background-color: #f5c200;
-            color: #000;
-        }
-
-        .dark-mode h1 {
-            color: #ffffff;
-        }
-
-        .dark-mode #darkModeToggle {
-            background-color: transparent;
-            color: #f5c200;
-        }
-
-        /* Side Menu Styles */
-        .side-menu {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            right: 0;
-            background-color: #0f96ae;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-        }
-
-        .side-menu a {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 25px;
-            color: white;
-            display: block;
-            transition: 0.3s;
-        }
-
-        .side-menu a:hover {
-            color: #f1f1f1;
-        }
-
-        .side-menu .closebtn {
-            position: absolute;
-            top: 0;
-            left: 25px;
-            font-size: 36px;
-            margin-left: 50px;
-        }
-
-        .menu-icon {
-            font-size: 24px;
-            cursor: pointer;
-            color: white;
-            margin-left: 10px;
-        }
-
-        .menu-content {
-            position: absolute;
-            top: 60px;
-            right: 10px; /* Posicionado logo abaixo do ícone do menu */
-            display: none;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 10px;
-            z-index: 1000;
-        }
-    /* Dropdown menu for Orientações button */
+.dark-mode header {
+    background-color: #121212;
+}
+
+.dark-mode .card {
+    background-color: #2e2e2e;
+    color: #ffffff;
+}
+
+.dark-mode .card h2 {
+    color: #ffffff;
+}
+
+.dark-mode .toggle-link {
+    background-color: #f5c200;
+    color: #000;
+}
+
+.dark-mode h1 {
+    color: #ffffff;
+}
+
+.dark-mode #darkModeToggle {
+    background-color: transparent;
+    color: #f5c200;
+}
+
+/* Side Menu Styles */
+.side-menu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #0f96ae;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.side-menu a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.side-menu a:hover {
+    color: #f1f1f1;
+}
+
+.side-menu .closebtn {
+    position: absolute;
+    top: 0;
+    left: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.menu-icon {
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+    margin-left: 10px;
+}
+
+/* Dropdown menu for Orientações button */
 .dropdown {
     position: relative;
     display: inline-block;
