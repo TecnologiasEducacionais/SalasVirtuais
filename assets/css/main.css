@@ -1835,4 +1835,45 @@ header img {
             padding: 10px;
             z-index: 1000;
         }
-    
+    /* Dropdown menu for Orientações button */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: #3b5998; /* Cor do botão original */
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+/* Dropdown content (the hidden menu) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #3b5998; /* Cor do menu suspenso */
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #314a86; /* Cor ao passar o mouse sobre os links */
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
