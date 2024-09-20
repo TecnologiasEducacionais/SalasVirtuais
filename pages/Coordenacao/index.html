@@ -2,19 +2,61 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Coordenação</title>
-    <link rel="stylesheet" href="https://raw.githubusercontent.com/TecnologiasEducacionais/SalasVirtuais/refs/heads/main/assets/css/main.css">
+
+    <!-- Caminho do favicon -->
+    <link rel="icon" href="assets/img/favicon.png" type="image/png">
+
+    <!-- Referência ao CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
-    <header>
-        <h1>Coordenação</h1>
+    <!-- Cabeçalho -->
+       <header>
+        <div class="left-header">
+            <a href="/index.html">
+                <img src="/assets/img/Logotipo.png" alt="Logotipo">
+            </a>
+        </div>
+        <div class="right-header">
+            <div class="search-bar">
+                <input type="text" id="searchInput" onkeyup="filterCards()" placeholder="Buscar coordenador...">
+            </div>
+            <!-- Botão com menu suspenso para Orientações -->
+            <div class="dropdown">
+                <button class="dropbtn" style="padding:10px;background-color:#3b5998;color:white;border:none;border-radius:25px;text-decoration:none;margin-right:10px;">
+                    Tutoriais
+                </button>
+                <div class="dropdown-content">
+                    <a href="https://docs.google.com/presentation/d/1S98W_EskCuOKAh6G9iZln9KnS2fPL27fJw7a-59_lSY/pub?start=false&loop=false&delayms=10000" target="_blank">Apresentação</a>
+                    <a href="https://www.youtube.com/watch?v=3WbEffQa_6Q" target="_blank">Vídeo</a>
+                </div>
+            </div>
+            <button id="darkModeToggle" class="theme-toggle">🌙</button>
+            <span class="menu-icon" onclick="openSideMenu()">☰</span>
+        </div>
     </header>
 
-    <div class="container" id="coordenacao-list">
-        <!-- Os coordenadores serão carregados dinamicamente -->
+    <h1>Salas Virtuais da Coordenação</h1>
+
+    <!-- Menu lateral -->
+    <div id="sideMenu" class="side-menu">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeSideMenu()">×</a>
+        <a href="/index.html">Página Inicial</a>
+        <a href="/pages/SetoresAdministrativos/index.html">Setores Administrativos</a>
+        <a href="/pages/DocentesDaGraduacao/index.html">Docentes da Graduação</a>
+        <a href="/pages/DocentesStrictoSensu/index.html">Docentes Stricto-Sensu</a>
+        <a href="/pages/DocentesPosgraduacao/index.html">Docentes Pós-graduação</a>
+        <a href="/pages/Tutores/index.html">Tutores</a>
     </div>
 
-    <script src="https://raw.githubusercontent.com/TecnologiasEducacionais/SalasVirtuais/1cf24ac085a58ee036e73afe907c547ec37e8263/assets/js/coordenacao.js"></script>
+    <!-- Container principal -->
+    <div class="container" id="cardContainer">
+        <!-- O conteúdo será adicionado dinamicamente -->
+    </div>
+
+    <!-- Referência ao JavaScript externo -->
+    <script src="assets/js/coordenacao.js"></script>
 </body>
 </html>
