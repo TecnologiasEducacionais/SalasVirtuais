@@ -1,10 +1,9 @@
 /* Main CSS for global styles */
 
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 body {
-    font-family: 'Ubuntu', sans-serif;
-    font-weight: 400; 
+    font-family: 'Poppins', sans-serif;
     background-color: #f0f4f8;
     margin: 0;
     padding: 0;
@@ -86,9 +85,8 @@ header img {
 }
 
 h1 {
-    font-family: 'Ubuntu', sans-serif;
-    font-weight: 600;
     margin-top: 30px;
+    font-weight: 600;
     font-size: 2.5em;
     text-align: center;
     letter-spacing: 1px;
@@ -117,8 +115,7 @@ h1 {
 }
 
 .card:hover {
-    /* transform: translateY(-10px); */  /* Desativar o movimento ao passar o mouse */
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2); /* Mantenha o efeito de sombra, se quiser */
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes fadeIn {
@@ -175,8 +172,14 @@ h1 {
 }
 
 .card .toggle-link:hover {
-    background-color: #314a86;
-    transform: translateY(-5px);
+    background-color: #f0a500;
+    color: #fff;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.card .toggle-link:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
 }
 
 .card .show-links {
@@ -201,8 +204,14 @@ h1 {
 }
 
 .card .show-links a:hover {
-    background-color: #3b5998;
-    transform: translateY(-5px);
+    background-color: #f0a500;
+    color: #fff;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.card .show-links a:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
 }
 
 #noResults {
@@ -285,22 +294,6 @@ h1 {
     cursor: pointer;
     color: white;
     margin-left: 10px;
-}
-
-/* Dropdown menu for Orientações button */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropbtn {
-    background-color: #3b5998; /* Cor do botão original */
-    color: white;
-    padding: 10px;
-    font-size: 16px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
 }
 
 /* Dropdown content (the hidden menu) */
