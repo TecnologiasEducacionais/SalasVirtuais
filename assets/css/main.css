@@ -117,8 +117,8 @@ h1 {
 }
 
 .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+    /* transform: translateY(-10px); */  /* Desativar o movimento ao passar o mouse */
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2); /* Mantenha o efeito de sombra, se quiser */
 }
 
 @keyframes fadeIn {
