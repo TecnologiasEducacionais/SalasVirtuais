@@ -1,9 +1,10 @@
 /* Main CSS for global styles */
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400&display=swap');
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400; /* Especificamente o peso regular */
     background-color: #f0f4f8;
     margin: 0;
     padding: 0;
@@ -15,6 +16,11 @@ body {
     color: #333;
     transition: background-color 0.3s ease, color 0.3s ease;
     overflow-x: hidden; /* Evitar rolagem horizontal */
+}
+
+h1, h2, h3 {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400; /* Garantir que os títulos também usem a regular, se necessário */
 }
 
 header {
