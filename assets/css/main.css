@@ -260,6 +260,11 @@ h1 {
     color: #f5c200;
 }
 
+/* Modo escuro: sombra branca ao passar o mouse sobre os cards */
+.dark-mode .card:hover {
+    box-shadow: 0 12px 20px rgba(255, 255, 255, 0.2); /* Sombra branca suave */
+}
+
 /* Side Menu Styles */
 .side-menu {
     height: 100%;
