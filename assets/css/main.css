@@ -210,7 +210,7 @@ h1 {
 }
 
 .card .show-links a:hover {
-    background-color: #f0a500;
+    background-color: #ea5a33;
     color: #fff;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
